@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 import { Socket } from 'socket.io';
 
-const secretJWT = process.env.SECRET_JWT ?? 'secret-jaguartech-taxitracker-1207';
+const secretJWT = process.env.SECRET_JWT ?? 'secret';
 
 const { verify } = jwt;
 
