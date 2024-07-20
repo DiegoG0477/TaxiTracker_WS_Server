@@ -17,6 +17,9 @@ RUN pnpm install
 # Copiar todo el código fuente
 COPY . .
 
+# Copiar el archivo .env al contenedor
+COPY .env .env
+
 # Construir el proyecto
 RUN pnpm build
 
@@ -36,6 +39,9 @@ RUN pnpm install --production --frozen-lockfile
 
 # Copiar el código construido desde la etapa de construcción
 COPY --from=builder /app/dist /app/dist
+
+# Copiar el archivo .env al contenedor
+COPY .env .env
 
 # Comando de inicio
 CMD ["npm", "start"]
