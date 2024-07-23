@@ -3,7 +3,7 @@ import { Server, Socket } from "socket.io";
 export class WebSocketHandler {
     private packetBuffer: any[] = [];
     private isProcessing = false;
-    private clientId = "";
+    private clientId = "default";
 
     constructor(private io: Server) {
         this.io.on("connection", (socket: Socket) =>
@@ -19,13 +19,12 @@ export class WebSocketHandler {
 
         if (kitId !== undefined) {
             socket.join(kitId);
-            this.registerSocketEvents(socket, kitId);
-        } else {
-            socket.disconnect();
         }
+
+        this.registerSocketEvents(socket);
     }
 
-    private registerSocketEvents(socket: Socket, kitId: string): void {
+    private registerSocketEvents(socket: Socket): void {
         socket.on("refresh:kit_location", (data) =>
             this.handleRefreshKitLocation(data)
         );
