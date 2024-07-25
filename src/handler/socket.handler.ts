@@ -12,10 +12,10 @@ export class WebSocketHandler {
     }
 
     private handleConnection(socket: Socket): void {
-        const kitId = socket.handshake.auth.kitId;
+        const kitId = socket.handshake.auth?.kitId;
 
         console.log("Client connected.");
-        console.log("User ID subscription:", kitId);
+        console.log("User ID subscription:");
 
         if (kitId !== undefined) {
             socket.join(kitId);
@@ -29,7 +29,10 @@ export class WebSocketHandler {
             this.handleRefreshKitLocation(data)
         );
 
-        socket.on("connect_error", (err) => this.handleConnectError(err));
+        socket.on("connect_error", (err) => {
+            console.log("Connection error:", err);
+            this.handleConnectError(err);
+        });
     }
 
     private handleRefreshKitLocation(data: any): void {

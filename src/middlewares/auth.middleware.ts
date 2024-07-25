@@ -8,7 +8,7 @@ const { verify } = jwt;
 const verifyJWT = (socket: Socket, next: any) => {
     try {
         const token = socket.handshake.auth?.token || socket.handshake.headers?.access_token;
-
+        
         console.log('token', token);
         
         //(kitId is important to connect the client to the correct room)
