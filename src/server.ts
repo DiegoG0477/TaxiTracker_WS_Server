@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import * as http from 'http';
 import { Server } from 'socket.io';
 import { WebSocketHandler } from './handler/socket.handler';
-import { socketioAuthMiddleware } from './middlewares/auth.middleware';
+// import { socketioAuthMiddleware } from './middlewares/auth.middleware';
 import cors from 'cors';
 
 dotenv.config();
@@ -45,7 +45,7 @@ const io = new Server(server, {
   pingTimeout: 2000
 });
 
-io.use(socketioAuthMiddleware);
+// io.use(socketioAuthMiddleware);
 
 const websocketHandler = new WebSocketHandler(io);
 
