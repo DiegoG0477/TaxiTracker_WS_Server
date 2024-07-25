@@ -15,7 +15,7 @@ export class WebSocketHandler {
         const kitId = socket.handshake.auth?.kitId;
 
         console.log("Client connected.");
-        console.log("User ID subscription:");
+        console.log("User ID subscription:", kitId);
 
         if (kitId !== undefined) {
             socket.join(kitId);
