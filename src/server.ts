@@ -27,7 +27,7 @@ const io = new Server(server, {
   pingTimeout: 2000
 });
 
-io.use(socketioAuthMiddleware);
+// io.use(socketioAuthMiddleware);
 
 const websocketHandler = new WebSocketHandler(io);
 
